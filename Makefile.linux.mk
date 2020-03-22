@@ -159,6 +159,8 @@ check-gum-linux-x86-thin: gum-linux-x86-thin ##@gum Run tests for Linux/x86 with
 	build/tmp_thin-linux-x86/frida-gum/tests/gum-tests $(test_args)
 check-gum-linux-x86_64-thin: gum-linux-x86_64-thin ##@gum Run tests for Linux/x86-64 without cross-arch support
 	build/tmp_thin-linux-x86_64/frida-gum/tests/gum-tests $(test_args)
+check-gum-linux-arm: gum-linux-arm ##@gum Run tests for Linux/ARM
+	build/tmp_thin-linux-arm/frida-gum/tests/gum-tests $(test_args)
 check-gum-linux-arm64: gum-linux-arm64 ##@gum Run tests for Linux/ARM64
 	build/tmp_thin-linux-arm64/frida-gum/tests/gum-tests $(test_args)
 
