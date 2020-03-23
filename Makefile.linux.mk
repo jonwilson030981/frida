@@ -121,6 +121,8 @@ gum-android-arm64: build/frida-android-arm64/lib/pkgconfig/frida-gum-1.0.pc ##@g
 gum-qnx-arm: build/frida_thin-qnx-arm/lib/pkgconfig/frida-gum-1.0.pc ##@gum Build for QNX/ARM
 gum-qnx-armeabi: build/frida_thin-qnx-armeabi/lib/pkgconfig/frida-gum-1.0.pc ##@gum Build for QNX/ARMEABI
 
+.PHONY: FORCE
+FORCE:
 
 define make-gum-rules
 build/.$1-gum-npm-stamp: build/$1-env-linux-$$(build_arch).rc
@@ -128,7 +130,7 @@ build/.$1-gum-npm-stamp: build/$1-env-linux-$$(build_arch).rc
 	. build/$1-env-linux-$$(build_arch).rc && cd frida-gum/bindings/gumjs && $(NPM) install
 	@touch $$@
 
-build/$1-%/lib/pkgconfig/frida-gum-1.0.pc: build/.frida-gum-submodule-stamp build/.$1-gum-npm-stamp build/$1-%/lib/pkgconfig/capstone.pc
+build/$1-%/lib/pkgconfig/frida-gum-1.0.pc: build/.frida-gum-submodule-stamp build/.$1-gum-npm-stamp build/$1-%/lib/pkgconfig/capstone.pc FORCE
 	. build/$1-meson-env-linux-$$(build_arch).rc; \
 	builddir=build/$2-$$*/frida-gum; \
 	if [ ! -f $$$$builddir/build.ninja ]; then \
